@@ -40,6 +40,15 @@ export function Navbar() {
   // Close mobile menu on route change
   useEffect(() => { setMenuOpen(false) }, [pathname])
 
+  useEffect(() => {
+    if (!menuOpen) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [menuOpen])
+
   return (
     <>
       <motion.nav
@@ -115,8 +124,11 @@ export function Navbar() {
 
         {/* Mobile menu toggle */}
         <button
+          type="button"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav-menu"
           className="md:hidden ml-auto p-2 text-slate hover:text-cloud transition-colors"
         >
           <div className="w-5 flex flex-col gap-[5px]">
@@ -140,11 +152,14 @@ export function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-nav-menu"
+            role="navigation"
+            aria-label="Mobile"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed top-[62px] inset-x-0 z-40 bg-steel/98 backdrop-blur-2xl border-b border-cyan-border md:hidden"
+            className="fixed top-[62px] inset-x-0 z-40 bg-steel/98 backdrop-blur-2xl border-b border-cyan-border md:hidden max-h-[calc(100vh-62px)] overflow-y-auto"
           >
             <div className="px-6 py-6 flex flex-col gap-1">
               {navLinks.map((link) => (

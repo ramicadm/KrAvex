@@ -30,8 +30,14 @@ export function AnimatedSection({
 
     const ctx = gsap.context(() => {
       const target = stagger
-        ? Array.from(el.children) as Element[]
+        ? (Array.from(el.children) as Element[])
         : el
+
+      // Stagger mode: apply "from" state immediately so content does not flash visible
+      // before ScrollTrigger runs (non-stagger uses inline opacity:0 on the wrapper).
+      if (stagger && Array.isArray(target) && target.length > 0) {
+        gsap.set(target, { opacity: 0, y })
+      }
 
       gsap.fromTo(
         target,

@@ -1,7 +1,7 @@
 const logos = [
   'ATSG', 'TransUnion', 'Optum / UnitedHealth', 'The Amico Group',
-  'IronFrame Advisory', 'ATSG', 'TransUnion', 'Optum / UnitedHealth',
-  'The Amico Group', 'IronFrame Advisory',
+  'Ironframe Advisory', 'ATSG', 'TransUnion', 'Optum / UnitedHealth',
+  'The Amico Group', 'Ironframe Advisory',
 ]
 
 export function TrustStrip() {

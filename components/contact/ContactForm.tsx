@@ -48,7 +48,17 @@ export function ContactForm() {
     reset,
     formState: { errors },
   } = useForm<ContactFormValues>({
-    resolver: zodResolver(schema),
+    resolver:      zodResolver(schema),
+    mode:          'onSubmit',
+    defaultValues: {
+      firstName: '',
+      lastName:  '',
+      email:     '',
+      company:   '',
+      service:   '',
+      budget:    '',
+      message:   '',
+    },
   })
 
   const onSubmit = async (data: ContactFormValues) => {
