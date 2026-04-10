@@ -1,0 +1,58 @@
+import type { BlogPost } from '@/types'
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug:     'nextjs-for-smb-2026',
+    category: 'Engineering',
+    title:    'Why we build with Next.js for every SMB client in 2026',
+    excerpt:  'The case for picking one stack and getting exceptional at it — and why App Router changed the calculation entirely.',
+    date:     'Mar 28, 2026',
+    readTime: '6 min',
+    icon:     '🏗️',
+  },
+  {
+    slug:     'fixed-pricing-vs-hourly',
+    category: 'Business',
+    title:    'Fixed pricing vs. hourly billing: what 18 years taught me',
+    excerpt:  'Clients want certainty more than they want low prices. Here\'s why fixed-fee projects win every time — and how to scope them without getting burned.',
+    date:     'Mar 20, 2026',
+    readTime: '8 min',
+    icon:     '💰',
+  },
+  {
+    slug:     'openai-honest-truth',
+    category: 'AI & Automation',
+    title:    'The honest truth about integrating OpenAI into business workflows',
+    excerpt:  'AI doesn\'t solve your process problems. It amplifies them. What we\'ve learned from 3 live AI integrations and what we\'d do differently.',
+    date:     'Mar 14, 2026',
+    readTime: '10 min',
+    icon:     '🤖',
+  },
+  {
+    slug:     'dashboard-5-questions',
+    category: 'Operations',
+    title:    'Before you build a dashboard: the 5 questions to answer first',
+    excerpt:  'Most internal dashboards fail because they solve the wrong problem. Here\'s the framework we use before writing a single line of code.',
+    date:     'Mar 8, 2026',
+    readTime: '5 min',
+    icon:     '📊',
+  },
+  {
+    slug:     'mvp-investable',
+    category: 'Startups',
+    title:    'What makes an MVP actually investable (it\'s not the features)',
+    excerpt:  'We\'ve helped build 4 MVPs in the last year. The ones that got funded had one thing in common — and it wasn\'t a polished UI.',
+    date:     'Mar 1, 2026',
+    readTime: '7 min',
+    icon:     '🚀',
+  },
+  {
+    slug:     'cicd-setup-kravex',
+    category: 'DevOps',
+    title:    'The CI/CD setup we use for every KrAvex project (and why)',
+    excerpt:  'GitHub Actions + Vercel + Railway. The exact pipeline we\'ve standardized on — and the one step we never skip.',
+    date:     'Feb 22, 2026',
+    readTime: '9 min',
+    icon:     '⚙️',
+  },
+]
