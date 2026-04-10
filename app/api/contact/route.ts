@@ -2,7 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+let resendSingleton: Resend | null = null
+
+function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY
+  if (!key) return null
+  if (!resendSingleton) resendSingleton = new Resend(key)
+  return resendSingleton
+}
 
 const schema = z.object({
   firstName: z.string().min(1),
@@ -18,6 +25,12 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
     const data = schema.parse(body)
+
+    const resend = getResend()
+    if (!resend) {
+      console.error('[contact] RESEND_API_KEY is not set')
+      return NextResponse.json({ error: 'Email not configured' }, { status: 503 })
+    }
 
     const { error } = await resend.emails.send({
       from:    'KrAvex Contact <contact@kravex.dev>',
